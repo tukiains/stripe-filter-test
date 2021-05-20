@@ -23,14 +23,14 @@ def _download(site: str, date: str, product: str = None) -> str:
     metadata = requests.get(url, payload).json()
     if not metadata:
         raise RuntimeError
-    for row in metadata:
-        filename = row['filename']
-        if not os.path.isfile(filename):
-            print(f"downloading {filename} ...")
-            res = requests.get(row['downloadUrl'])
-            with open(filename, 'wb') as f:
-                f.write(res.content)
-        return filename
+    metadata = metadata[0]
+    filename = metadata['filename']
+    if not os.path.isfile(filename):
+        print(f"downloading {filename} ...")
+        res = requests.get(metadata['downloadUrl'])
+        with open(filename, 'wb') as f:
+            f.write(res.content)
+    return filename
 
 
 def main():
