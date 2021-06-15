@@ -9,7 +9,7 @@ $ source venv/bin/activate
 $ pip3 install .
 $ git clone https://github.com/tukiains/stripe-filter-test
 $ cd stripe-filter-test/
-$ python3 clean-stripes.py
+$ python3 clean_stripes.py
 ```
 
 Images will be appear in ```images/``` folder.
